@@ -1,0 +1,36 @@
+<%- include("partials/header.ejs") %>
+
+<div id="landing" class="ui container">
+  <div class="ui center aligned four column grid">
+    <div class="row">
+      <i class="massive spotify icon" id="spotify-icon"></i>
+      <h1 id="brand-name">
+        TopSpot
+      </h1>
+    </div>
+    <div class="row">
+      <h3>Login to get insights about your most played tracks <br> and favorite artists</h3>
+    </div>
+    <hr>
+    <div class="row">
+      <a href="/auth/spotify">
+        <button class="ui large black button">
+          <i class="spotify icon"></i>
+          Log In *
+        </button>
+      </a>
+    </div>
+    <div class="row" id="info">
+      <h5>* Spotify account is required</h5>
+    </div>
+    <div class="row">
+      <a href="https://www.spotify.com/in/signup/">
+        <button class="ui grey tiny button">
+          <i class="spotify icon"></i>
+          Sign Up for Spotify
+        </button>
+      </a>
+    </div>
+  </div>
+</div>
+<%- include ('partials/footer.ejs') %>

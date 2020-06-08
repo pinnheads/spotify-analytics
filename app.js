@@ -120,8 +120,7 @@ app.get('/', function (req, res) {
       '<h1>Logged In</h1><a href="/auth/spotify">Login</a><br><a href="/logout">Logout</a><br><a href="/account">Account</a><br><a href="/top/artists">Artist</a><br><a href="/top/tracks">Tracks</a><br><a href="/account/playlists">Playlists</a>';
     res.send(data);
   } else {
-    const data = '<a href="/auth/spotify">Login</a>';
-    res.send(data);
+    res.render('landing');
   }
 });
 

@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+}
+
+#landing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#spotify-icon {
+  color: #1ED760;
+}
+
+#info {
+  padding-top: 0;
+}
+
+#brand-name {
+  font-size: 5rem;
+  margin-top: 14px;
+}
