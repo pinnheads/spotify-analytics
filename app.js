@@ -116,9 +116,7 @@ app.get('/logout', function (req, res) {
 */
 app.get('/', function (req, res) {
   if (req.isAuthenticated()) {
-    const data =
-      '<h1>Logged In</h1><a href="/auth/spotify">Login</a><br><a href="/logout">Logout</a><br><a href="/account">Account</a><br><a href="/top/artists">Artist</a><br><a href="/top/tracks">Tracks</a><br><a href="/account/playlists">Playlists</a>';
-    res.send(data);
+    res.render('partials/sideMenu');
   } else {
     res.render('landing');
   }

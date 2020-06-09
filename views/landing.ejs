@@ -1,7 +1,21 @@
 <%- include("partials/header.ejs") %>
-
+<!-- Main container -->
 <div id="landing" class="ui container">
-  <div class="ui center aligned four column grid">
+  <!-- Menu Button -->
+  <div class="ui black big launch right attached fixed button" onclick="toggleSidebar()">
+    <i class="content icon"></i>
+  </div>
+  <!-- Left Side Menu -->
+  <div class="ui center aligned inverted left vertical menu sidebar">
+    <div id="menu">
+      <div class="item">
+        <img src="images/spotify-logo-png.png" id="menu-logo" alt="Spotify Logo">
+      </div>
+      <a class="active teal item">Sign-in</a>
+    </div>
+  </div>
+  <!-- Main content -->
+  <div class="ui center aligned grid">
     <div class="row">
       <i class="massive spotify icon" id="spotify-icon"></i>
       <h1 id="brand-name">
@@ -9,9 +23,10 @@
       </h1>
     </div>
     <div class="row">
-      <h3>Login to get insights about your most played tracks <br> and favorite artists</h3>
+      <h3>
+        Login with spotify to get insights about your most played tracks and favorite artists
+      </h3>
     </div>
-    <hr>
     <div class="row">
       <a href="/auth/spotify">
         <button class="ui large black button">
@@ -23,6 +38,7 @@
     <div class="row" id="info">
       <h5>* Spotify account is required</h5>
     </div>
+    <hr />
     <div class="row">
       <a href="https://www.spotify.com/in/signup/">
         <button class="ui grey tiny button">
@@ -33,4 +49,14 @@
     </div>
   </div>
 </div>
+</div>
+
+<!-- TODO - Remove the script from here and put it a Javascript file -->
+<script>
+  function toggleSidebar() {
+    $('.sidebar')
+      .sidebar('setting', 'transition', 'overlay')
+      .sidebar('toggle');
+  }
+</script>
 <%- include ('partials/footer.ejs') %>

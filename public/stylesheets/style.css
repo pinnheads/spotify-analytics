@@ -29,3 +29,26 @@ body {
   font-size: 5rem;
   margin-top: 14px;
 }
+
+#menu {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+#menu-logo {
+  width: 100px;
+  margin: 10px auto;
+}
+
+.fixed.launch.button {
+  position: fixed;
+  top: 63px;
+  left: -1px;
+  height: auto;
+  white-space: nowrap;
+  -webkit-transition: 0.3s width ease, 0.5s transform ease;
+  -moz-transition: 0.3s width ease, 0.5s transform ease;
+  -o-transition: 0.3s width ease, 0.5s transform ease;
+  -ms-transition: 0.3s width ease, 0.5s transform ease;
+  transition: 0.3s width ease, 0.5s transform ease;
+}
