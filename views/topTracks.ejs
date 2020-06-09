@@ -1,0 +1,53 @@
+<%- include("partials/navbar.ejs") %>
+<div class="ui fluid container" id="artists">
+  <div class="ui center aligned grid" id="grid">
+    <div class="row">
+      <h1 id="page-heading">Your Favourite Tracks</h1>
+    </div>
+    <hr>
+    <div class="row"></div>
+    <!-- <div class="row"> -->
+    <% data.forEach(track => { %>
+    <div class="four wide column">
+      <div class="ui special cards">
+        <div class="green card">
+          <div class="blurring dimmable image">
+            <div class="ui dimmer">
+              <div class="content">
+                <div class="center">
+                  <div class="ui inverted button">Add Friend</div>
+                  <div class="ui inverted button">Add Friend</div>
+                </div>
+              </div>
+            </div>
+            <img src="<%= track.album.images[0].url %>" class="track-image">
+          </div>
+          <div class="content">
+            <a class="header"><%= track.name %></a>
+            <div class="meta">
+              <span class="date">Created in Sep 2014</span>
+            </div>
+          </div>
+          <div class="extra content">
+            <a>
+              <i class="users icon"></i>
+              Popularity: <%= track.popularity %>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+    <!-- </div> -->
+  </div>
+</div>
+<!-- End of row from navbar.ejs -->
+</div>
+<!-- End of grid from navbar.ejs -->
+</div>
+<script>
+  $('.special.cards .image').dimmer({
+    on: 'hover'
+  });
+</script>
+<%- include("partials/footer.ejs") %>

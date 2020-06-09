@@ -1,0 +1,23 @@
+<%- include("header.ejs") %>
+<!-- Top Navbar -->
+
+<div class="ui stackable two row grid">
+  <div class="row" id="navbar">
+    <div class="ui small inverted fluid fixed stackable top pointing menu">
+      <div class="vertically fitted item">
+        <img src="/images/spotify-logo-png.png" id="menu-logo" alt="Spotify Logo">
+      </div>
+      <a href="/account" class="item">Account</a>
+      <a href="/top/artists" class="item">Your Favourite Artists</a>
+      <a href="/top/tracks" class="item">Your Favourite Tracks</a>
+      <a href="/account/playlists" class="item">Your Playlists</a>
+      <div class="ui borderless inverted right menu">
+        <a href="/logout" class="item">
+          <button class="ui large red button">
+            Logout
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="row" id="content">

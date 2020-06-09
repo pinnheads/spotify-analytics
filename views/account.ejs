@@ -1,0 +1,46 @@
+<%- include("partials/navbar.ejs") %>
+<div class="ui fluid container" id="account">
+  <div class="ui center aligned grid" id="grid">
+    <div class="row">
+      <h1 id="page-heading">Account</h1>
+    </div>
+    <hr>
+    <div class="row">
+      <img src="<%= accountData.images[accountData.images.length - 1].url %>" alt="User Image" class="user-image">
+    </div>
+    <div class="row">
+      <h1 class="user-name"><%= accountData.display_name %></h1>
+    </div>
+    <div class="row">
+      <h4><%= accountData.followers.total %> Followers</h4>
+    </div>
+    <div class="row">
+      <h4><%= accountData.email %></h4>
+    </div>
+    <a href="<%= accountData.external_urls.spotify %>" target="_blank">
+      <button class="ui large green button">
+        <i class="external alternate icon"></i>
+        Open Profile in Spotify
+      </button>
+    </a>
+  </div>
+</div>
+<!-- End of row from navbar.ejs -->
+</div>
+<!-- End of grid from navbar.ejs -->
+</div>
+<script>
+  const heading = document.querySelectorAll('#page-heading')[0].textContent;
+  const navItems = document.querySelectorAll('a.item');
+  navItems.forEach(item => {
+    if (item.textContent === heading) {
+      console.log('done')
+      item.classList.add('green');
+      item.classList.add('active');
+    } else {
+      console.log('Not found');
+    }
+  });
+</script>
+
+<%- include("partials/footer.ejs") %>

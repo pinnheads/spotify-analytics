@@ -1,19 +1,6 @@
 <%- include("partials/header.ejs") %>
 <!-- Main container -->
-<div id="landing" class="ui container">
-  <!-- Menu Button -->
-  <div class="ui black big launch right attached fixed button" onclick="toggleSidebar()">
-    <i class="content icon"></i>
-  </div>
-  <!-- Left Side Menu -->
-  <div class="ui center aligned inverted left vertical menu sidebar">
-    <div id="menu">
-      <div class="item">
-        <img src="images/spotify-logo-png.png" id="menu-logo" alt="Spotify Logo">
-      </div>
-      <a class="active teal item">Sign-in</a>
-    </div>
-  </div>
+<div id="landing" class="ui fluid container">
   <!-- Main content -->
   <div class="ui center aligned grid">
     <div class="row">
@@ -29,7 +16,7 @@
     </div>
     <div class="row">
       <a href="/auth/spotify">
-        <button class="ui large black button">
+        <button class="ui large green button">
           <i class="spotify icon"></i>
           Log In *
         </button>
@@ -50,13 +37,4 @@
   </div>
 </div>
 </div>
-
-<!-- TODO - Remove the script from here and put it a Javascript file -->
-<script>
-  function toggleSidebar() {
-    $('.sidebar')
-      .sidebar('setting', 'transition', 'overlay')
-      .sidebar('toggle');
-  }
-</script>
 <%- include ('partials/footer.ejs') %>

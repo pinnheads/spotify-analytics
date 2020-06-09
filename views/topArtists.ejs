@@ -1,0 +1,77 @@
+<%- include("partials/navbar.ejs") %>
+<div class="ui fluid container" id="artists">
+  <div class="ui center aligned grid" id="grid">
+    <div class="row">
+      <h1 id="page-heading">Your Favourite Artists</h1>
+    </div>
+    <hr>
+    <% data.forEach(artist => { %>
+    <div class="row">
+      <div class="three wide column">
+        <img src="<%= artist.images[0].url %>" alt="Artist Image" class="artist-image">
+      </div>
+      <div class="two wide middle aligned column">
+        <h1 class="artist-name"><%= artist.name %></h1>
+        <h3><span class="followers"><%= artist.followers.total %></span> Followers</h3>
+        <h4 class="genre"> <span id="genre-heading">Genre: </span>
+          <% artist.genres.forEach(genre => { %>
+          <%= genre %>,
+          <% }) %>
+        </h4>
+      </div>
+      <div class="six wide middle aligned column">
+        <div class="ui inverted blue progress example1" data-percent="<%= artist.popularity %>">
+          <div class="bar"></div>
+          <div class="label">Popularity: <%= artist.popularity %></div>
+        </div>
+        <a href="<%= artist.external_urls.spotify %>" target="_blank">
+          <button class="ui large green button">
+            <i class="external alternate icon"></i>
+            Open Profile in Spotify
+          </button>
+        </a>
+      </div>
+    </div>
+    <hr>
+    <% }) %>
+  </div>
+</div>
+<!-- End of row from navbar.ejs -->
+</div>
+<!-- End of grid from navbar.ejs -->
+</div>
+<script>
+  $('.example1').progress();
+</script>
+
+<script>
+  var numbers = document.querySelectorAll('.followers');
+
+  function numberWithCommas(x) {
+    var pattern = /(-?\d+)(\d{3})/;
+    while (pattern.test(x))
+      x = x.replace(pattern, "$1,$2");
+    return x;
+  }
+
+  numbers.forEach(item => {
+    var result = numberWithCommas(item.textContent);
+    item.textContent = result;
+  })
+</script>
+
+<script>
+  const heading = document.querySelectorAll('#page-heading')[0].textContent;
+  const navItems = document.querySelectorAll('a.item');
+  navItems.forEach(item => {
+    if (item.textContent === heading) {
+      console.log('done')
+      item.classList.add('green');
+      item.classList.add('active');
+    } else {
+      console.log('Not found');
+    }
+  });
+</script>
+
+<%- include("partials/footer.ejs") %>

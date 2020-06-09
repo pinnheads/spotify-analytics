@@ -43,7 +43,7 @@ passport.use(
       aToken = accessToken;
       rToken = refreshToken;
       expireTime = expires_in;
-
+      console.log(aToken);
       process.nextTick(function () {
         return done(null, profile);
       });
@@ -101,7 +101,6 @@ app.get(
   '/auth/spotify/callback',
   passport.authenticate('spotify', { failureRedirect: '/login' }),
   function (req, res) {
-    console.log(req.user);
     res.redirect('/');
   }
 );
@@ -116,7 +115,7 @@ app.get('/logout', function (req, res) {
 */
 app.get('/', function (req, res) {
   if (req.isAuthenticated()) {
-    res.render('partials/sideMenu');
+    res.redirect('/account');
   } else {
     res.render('landing');
   }
@@ -134,9 +133,8 @@ app.get('/account', ensureAuthenticated, function (req, res) {
     },
     json: true,
   };
-
   rp(options).then(function (response) {
-    res.send(response);
+    res.render('account', { accountData: response });
   });
 });
 
@@ -164,6 +162,7 @@ app.get('/top/:query', ensureAuthenticated, (req, res) => {
   const query = req.params.query;
   const baseUrl = 'https://api.spotify.com/v1/me/top';
   const queryURL = baseUrl + `/${query}`;
+  console.log(query);
   var options = {
     method: 'GET',
     uri: queryURL,
@@ -176,7 +175,12 @@ app.get('/top/:query', ensureAuthenticated, (req, res) => {
   };
 
   rp(options).then(function (response) {
-    res.send(response.items);
+    console.log(response.items[0]);
+    if (query === 'artists') {
+      res.render('topArtists', { data: response.items });
+    } else {
+      res.render('topTracks', { data: response.items });
+    }
   });
 });
 
