@@ -36,7 +36,8 @@ passport.use(
     {
       clientID: appKey,
       clientSecret: appSecret,
-      callbackURL: 'http://localhost:3000/auth/spotify/callback',
+      callbackURL:
+        'https://arcane-eyrie-81143.herokuapp.com/auth/spotify/callback',
     },
     function (accessToken, refreshToken, expires_in, profile, done) {
       // Set Globals
