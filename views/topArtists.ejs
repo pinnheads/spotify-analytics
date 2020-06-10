@@ -1,48 +1,57 @@
 <%- include("partials/navbar.ejs") %>
 <div class="ui fluid container" id="artists">
-  <div class="ui center aligned grid" id="grid">
-    <div class="row">
-      <h1 id="page-heading">Your Favourite Artists</h1>
-    </div>
-    <hr>
-    <% data.forEach(artist => { %>
-    <div class="row">
-      <div class="three wide column">
-        <img src="<%= artist.images[0].url %>" alt="Artist Image" class="artist-image">
+  <div class="container">
+    <div class="ui center aligned stackable grid" id="grid">
+      <div class="row">
+        <h1 id="page-heading">Your Favourite Artists</h1>
       </div>
-      <div class="two wide middle aligned column">
-        <h1 class="artist-name"><%= artist.name %></h1>
-        <h3><span class="followers"><%= artist.followers.total %></span> Followers</h3>
-        <h4 class="genre"> <span id="genre-heading">Genre: </span>
-          <% artist.genres.forEach(genre => { %>
-          <%= genre %>,
+      <hr>
+      <div class="row">
+        <div class="ui stackable four column grid">
+          <% data.forEach(artist => { %>
+          <div class="column">
+            <div class="ui link cards">
+              <div class="ui green centered card" id="artist-card">
+                <div class="image">
+                  <img src="<%= artist.images[0].url %>" alt="Artist Image" id="artist-image">
+                </div>
+                <div class="content">
+                  <div class="header"> <span class="artist-name"><%= artist.name %></span>
+                  </div>
+                  <div class="meta">
+                    <a class="followers">Followers: <%= artist.followers.total %></a>
+                  </div>
+                  <div class="description genre">
+                    Genre:
+                    <% artist.genres.forEach(genre => { %>
+                    <%= genre %>,
+                    <% }) %>
+                  </div>
+                </div>
+                <div class="extra content">
+                  <span>
+                    <i class="user icon"></i>
+                    Popularity: <%= artist.popularity %>
+                  </span>
+                </div>
+                <a href="<%= artist.external_urls.spotify %>" target="_blank">
+                  <div class="ui bottom green attached button">
+                    <i class="external alternate icon"></i>
+                    Open Profile
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
           <% }) %>
-        </h4>
-      </div>
-      <div class="six wide middle aligned column">
-        <div class="ui inverted blue progress example1" data-percent="<%= artist.popularity %>">
-          <div class="bar"></div>
-          <div class="label">Popularity: <%= artist.popularity %></div>
         </div>
-        <a href="<%= artist.external_urls.spotify %>" target="_blank">
-          <button class="ui large green button">
-            <i class="external alternate icon"></i>
-            Open Profile in Spotify
-          </button>
-        </a>
       </div>
     </div>
-    <hr>
-    <% }) %>
   </div>
+  <!-- Sidebar and stuff  -->
 </div>
-<!-- End of row from navbar.ejs -->
 </div>
-<!-- End of grid from navbar.ejs -->
 </div>
-<script>
-  $('.example1').progress();
-</script>
 
 <script>
   var numbers = document.querySelectorAll('.followers');
@@ -57,7 +66,7 @@
   numbers.forEach(item => {
     var result = numberWithCommas(item.textContent);
     item.textContent = result;
-  })
+  });
 </script>
 
 <script>

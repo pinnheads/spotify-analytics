@@ -1,53 +1,98 @@
 <%- include("partials/navbar.ejs") %>
 <div class="ui fluid container" id="artists">
-  <div class="ui center aligned grid" id="grid">
-    <div class="row">
-      <h1 id="page-heading">Your Favourite Tracks</h1>
-    </div>
-    <hr>
-    <div class="row"></div>
-    <!-- <div class="row"> -->
-    <% data.forEach(track => { %>
-    <div class="four wide column">
-      <div class="ui special cards">
-        <div class="green card">
-          <div class="blurring dimmable image">
-            <div class="ui dimmer">
-              <div class="content">
-                <div class="center">
-                  <div class="ui inverted button">Add Friend</div>
-                  <div class="ui inverted button">Add Friend</div>
+  <div class="container">
+    <div class="ui center aligned stackable grid" id="grid">
+      <div class="row">
+        <h1 id="page-heading">Your Favourite Tracks</h1>
+      </div>
+      <hr>
+      <div class="one column row">
+        <div class="ui stackable four column grid">
+          <% data.forEach(track => { %>
+          <div class="column">
+            <div class="ui special cards">
+              <div class="ui green centered card" id="card">
+                <div class="blurring dimmable image">
+                  <div class="ui dimmer">
+                    <div class="content">
+                      <div class="center">
+                        <a href="<%= track.external_urls.spotify %>" target="_blank">
+                          <div class="ui inverted green button">
+                            <i class="spotify icon"></i>
+                            Open In Spotify
+                          </div>
+                        </a>
+                        <a href="<%= track.preview_url %>" target="_blank">
+                          <div class="ui black button">
+                            Preview
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <img src="<%= track.album.images[0].url %>" id="track-image">
+                </div>
+                <div class="content">
+                  <a class="header" href="<%= track.external_urls.spotify %>" target="_blank"><%= track.name %></a>
+                  <div class="meta">
+                    <span>Artists: <% track.artists.forEach(artist => { %>
+                      <a href="<%= artist.external_urls.spotify %> "><%= artist.name %></a>
+                      <% }) %> </span>
+                  </div>
+                  <div class="description">
+                    Duration: <span class="duration"><%= track.duration_ms %></span>
+                    <br>
+                    Released On <%= track.album.release_date %>
+                  </div>
+                </div>
+                <div class="extra content">
+                  <a>
+                    <i class="users icon"></i>
+                    Popularity: <%= track.popularity %>
+                  </a>
                 </div>
               </div>
             </div>
-            <img src="<%= track.album.images[0].url %>" class="track-image">
           </div>
-          <div class="content">
-            <a class="header"><%= track.name %></a>
-            <div class="meta">
-              <span class="date">Created in Sep 2014</span>
-            </div>
-          </div>
-          <div class="extra content">
-            <a>
-              <i class="users icon"></i>
-              Popularity: <%= track.popularity %>
-            </a>
-          </div>
+          <% }) %>
         </div>
       </div>
     </div>
-    <% }) %>
-    <!-- </div> -->
   </div>
 </div>
-<!-- End of row from navbar.ejs -->
+<!-- Sidebar and stuff  -->
 </div>
-<!-- End of grid from navbar.ejs -->
+</div>
 </div>
 <script>
   $('.special.cards .image').dimmer({
     on: 'hover'
+  });
+</script>
+<script>
+  const milliseconds = document.querySelectorAll('.duration');
+  milliseconds.forEach(ms => {
+    var result = msToMinutesAndSeconds(ms.textContent);
+    ms.textContent = result;
+  })
+
+  function msToMinutesAndSeconds(ms) {
+    var minutes = Math.floor(ms / 60000);
+    var seconds = ((ms % 60000) / 1000).toFixed(0);
+    return (seconds == 60 ? (minutes + 1) + ":00" : minutes + ":" + (seconds < 10 ? "0" : "") + seconds);
+  }
+</script>
+<script>
+  const heading = document.querySelectorAll('#page-heading')[0].textContent;
+  const navItems = document.querySelectorAll('a.item');
+  navItems.forEach(item => {
+    if (item.textContent === heading) {
+      console.log('done')
+      item.classList.add('green');
+      item.classList.add('active');
+    } else {
+      console.log('Not found');
+    }
   });
 </script>
 <%- include("partials/footer.ejs") %>
