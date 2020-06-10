@@ -196,6 +196,6 @@ function ensureAuthenticated(req, res, next) {
   res.redirect('/login');
 }
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log('Server started/restarted');
 });
