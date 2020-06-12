@@ -11,7 +11,7 @@
     <div class="row">
       <h1 class="user-name"><%= accountData.display_name %></h1>
     </div>
-    <div class="row">
+    <div class="row" id="followers-user">
       <h4><%= accountData.followers.total %> Followers</h4>
     </div>
     <div class="row">
@@ -29,18 +29,4 @@
 </div>
 <!-- End of grid from navbar.ejs -->
 </div>
-<script>
-  const heading = document.querySelectorAll('#page-heading')[0].textContent;
-  const navItems = document.querySelectorAll('a.item');
-  navItems.forEach(item => {
-    if (item.textContent === heading) {
-      console.log('done')
-      item.classList.add('green');
-      item.classList.add('active');
-    } else {
-      console.log('Not found');
-    }
-  });
-</script>
-
 <%- include("partials/footer.ejs") %>

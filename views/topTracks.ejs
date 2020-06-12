@@ -33,7 +33,8 @@
                   <img src="<%= track.album.images[0].url %>" id="track-image">
                 </div>
                 <div class="content">
-                  <a class="header" href="<%= track.external_urls.spotify %>" target="_blank"><%= track.name %></a>
+                  <a class="header track-name" href="<%= track.external_urls.spotify %>"
+                    target="_blank"><%= track.name %></a>
                   <div class="meta">
                     <span>Artists: <% track.artists.forEach(artist => { %>
                       <a href="<%= artist.external_urls.spotify %> "><%= artist.name %></a>
@@ -64,35 +65,4 @@
 </div>
 </div>
 </div>
-<script>
-  $('.special.cards .image').dimmer({
-    on: 'hover'
-  });
-</script>
-<script>
-  const milliseconds = document.querySelectorAll('.duration');
-  milliseconds.forEach(ms => {
-    var result = msToMinutesAndSeconds(ms.textContent);
-    ms.textContent = result;
-  })
-
-  function msToMinutesAndSeconds(ms) {
-    var minutes = Math.floor(ms / 60000);
-    var seconds = ((ms % 60000) / 1000).toFixed(0);
-    return (seconds == 60 ? (minutes + 1) + ":00" : minutes + ":" + (seconds < 10 ? "0" : "") + seconds);
-  }
-</script>
-<script>
-  const heading = document.querySelectorAll('#page-heading')[0].textContent;
-  const navItems = document.querySelectorAll('a.item');
-  navItems.forEach(item => {
-    if (item.textContent === heading) {
-      console.log('done')
-      item.classList.add('green');
-      item.classList.add('active');
-    } else {
-      console.log('Not found');
-    }
-  });
-</script>
 <%- include("partials/footer.ejs") %>

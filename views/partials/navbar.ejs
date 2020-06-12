@@ -5,13 +5,14 @@
 
   <div class="computer only row">
     <div class="column">
-      <div class="ui small inverted fluid stackable pointing menu">
+      <div class="ui small inverted fixed fluid stackable pointing menu">
         <div class="vertically fitted item">
           <img src="/images/spotify-logo-png.png" id="menu-logo" alt="Spotify Logo">
         </div>
         <a href="/account" class="item">Account</a>
         <a href="/top/artists" class="item">Your Favourite Artists</a>
         <a href="/top/tracks" class="item">Your Favourite Tracks</a>
+        <!-- TODO - Add User Playlist Section -->
         <!-- <a href="/account/playlists" class="item">Your Playlists</a> -->
         <div class="ui borderless inverted right menu">
           <a href="/logout" class="item">
@@ -31,7 +32,6 @@
       </div>
     </div>
   </div>
-
 </div>
 
 <div class="ui center aligned pushable segment">
@@ -51,41 +51,3 @@
   </div>
   <div class="pusher">
     <div id="content" class="ui segment">
-
-
-
-      <!-- <div class="ui stackable grid">
-  <div class="ui grid">
-    <div class="computer only row" id="navbar">
-      <div class="column">
-        <div class="ui small inverted fluid fixed stackable top pointing menu">
-          
-        </div>
-      </div>
-      <div class="tablet mobile only row">
-        <div class="column">
-          <div class="ui menu">
-            <a id="mobile_item" class="item"><i class="bars icon"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="ui pushable segment">
-      <div class="ui sidebar vertical menu">
-        <a class="item">Menu Item A</a>
-        <a class="item">Menu Item B</a>
-        <a class="item">Menu Item C</a>
-        <a class="item">Menu Item D</a>
-      </div>
-      <div class="pusher">
-        <div class="ui segment">
-          <div class="row" id="content">
-          </div> -->
-
-
-      <script>
-        $('.ui.sidebar').sidebar({
-          context: $('.ui.pushable.segment'),
-          transition: 'overlay'
-        }).sidebar('attach events', '#mobile_item');
-      </script>

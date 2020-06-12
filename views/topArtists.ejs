@@ -52,35 +52,4 @@
 </div>
 </div>
 </div>
-
-<script>
-  var numbers = document.querySelectorAll('.followers');
-
-  function numberWithCommas(x) {
-    var pattern = /(-?\d+)(\d{3})/;
-    while (pattern.test(x))
-      x = x.replace(pattern, "$1,$2");
-    return x;
-  }
-
-  numbers.forEach(item => {
-    var result = numberWithCommas(item.textContent);
-    item.textContent = result;
-  });
-</script>
-
-<script>
-  const heading = document.querySelectorAll('#page-heading')[0].textContent;
-  const navItems = document.querySelectorAll('a.item');
-  navItems.forEach(item => {
-    if (item.textContent === heading) {
-      console.log('done')
-      item.classList.add('green');
-      item.classList.add('active');
-    } else {
-      console.log('Not found');
-    }
-  });
-</script>
-
 <%- include("partials/footer.ejs") %>
